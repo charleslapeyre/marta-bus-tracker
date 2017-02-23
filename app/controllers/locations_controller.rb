@@ -16,7 +16,7 @@ class LocationsController < ApplicationController
     # grabs all of the buses from the marta api and converts it into a ruby array of hashes
     @buses = fetch_buses_from_api(source_url)
 
-
+    # use select method rather than each method. Also look at each versus map.
     @buses.select! do |bus|
       is_nearby?(@location.latitude, @location.longitude, bus["LATITUDE"], bus ["LONGITUDE"])
     end
